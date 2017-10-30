@@ -79,10 +79,14 @@ public class LoginModel extends AbstractTableModel {
         return sqlHelper.exeUpdate(sql, paras);
     }
 
-    public void queryStr(String sql, String St) {
-        String sql0 = "select clerkid,name,zhiwei,password  from UserLogin  where clerkid=? or zhiwei=?";
-        String[] paras = {St, St};//此处两个变量，调了好大会才发现错误
-        this.query(sql0, paras);
+    /**
+     * 根据姓名或员工号或职位查询登录信息
+     * @param St
+     */
+    public void getLoginInfo(String St) {
+        String sql = "select clerkid,name,zhiwei,password from UserLogin where name=? or clerkid=? or zhiwei=?";
+        String[] paras = {St, St, St};
+        this.query(sql, paras);
     }
     
     /**

@@ -1,5 +1,6 @@
 /**
- * 登录管理界面实现
+ * 功能: 登录管理界面实现
+ * 时间: 2013.04.30
  */
 package com.res.view;
 
@@ -28,7 +29,7 @@ public class LoginInfo extends JPanel implements ActionListener, MouseListener {
 
     public LoginInfo() {
         p1 = new JPanel(new FlowLayout(FlowLayout.CENTER));//流布局的居中布局
-        jla1 = new JLabel("请输入姓名(员工号或职位)");
+        jla1 = new JLabel("请输入姓名, 员工号或者职位");
 
         jla1.setFont(MyFont.f2);
         jtf = new JTextField(20);
@@ -43,7 +44,7 @@ public class LoginInfo extends JPanel implements ActionListener, MouseListener {
         //处理中间的人事表格
         lm = new LoginModel();
         String paras[] = {"1"};
-        lm.query("select  clerkid,name,zhiwei,password  from UserLogin  where 1=?", paras);
+        lm.query("select clerkid,name,zhiwei,password from UserLogin where 1=?", paras);
         jtable = new JTable(lm);
 
         p2 = new JPanel(new BorderLayout());
@@ -88,8 +89,7 @@ public class LoginInfo extends JPanel implements ActionListener, MouseListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        if (e.getSource() == jb3) {///添加密码
+        if (e.getSource() == jb3) {	// 添加登录用户
             AddMima am = new AddMima(Windows1.w1, "添加密码", true);
             String[] paras = {"1"};
             //更新数据模型
@@ -97,7 +97,7 @@ public class LoginInfo extends JPanel implements ActionListener, MouseListener {
             lm.query("select  clerkid,name,zhiwei,password  from UserLogin  where 1=?", paras);
             this.jtable.setModel(lm);
             jla2.setText("总记录数 " + lm.getRowCount() + " 条");
-        } else if (e.getSource() == jb4) {////修改密码
+        } else if (e.getSource() == jb4) {	// 修改登录用户信息
 
             int i = this.jtable.getSelectedRow();
             if (i == -1) {
@@ -115,7 +115,7 @@ public class LoginInfo extends JPanel implements ActionListener, MouseListener {
             lm.query("select  clerkid,name,zhiwei,password  from UserLogin  where 1=?", paras);
             this.jtable.setModel(lm);
             jla2.setText("总记录数 " + lm.getRowCount() + " 条");
-        } else if (e.getSource() == jb2) {  /////删除
+        } else if (e.getSource() == jb2) {	// 删除登录用户
             //String  i=new Integer(jtable.getSelectedRow()).toString();
             int i = jtable.getSelectedRow();
             if (i == -1) {
@@ -143,18 +143,13 @@ public class LoginInfo extends JPanel implements ActionListener, MouseListener {
             //更新JTable
             this.jtable.setModel(lm);//自动完成更新
             jla2.setText("总记录数 " + lm.getRowCount() + " 条");
-        } else if (e.getSource() == jb1) {///////////////查询
-
-            // “查询”按钮所触发事件的处理
+        } else if (e.getSource() == jb1) {	// 查询
             if (jtf.getText().trim().equals("")) {
-
                 JOptionPane.showMessageDialog(null, "请输入要查询的内容");
             } else {
                 St = jtf.getText().trim();
-                String sql = "select  clerkid,name,zhiwei,password  from UserLogin  where clerkid=? or zhiwei=?";
-
                 lm = new LoginModel();
-                lm.queryStr(sql, St);
+                lm.getLoginInfo(St);
                 this.jtable.setModel(lm);
 
                 jla2.setText("总记录数 " + lm.getRowCount() + " 条");
