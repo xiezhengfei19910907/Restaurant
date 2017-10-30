@@ -43,7 +43,6 @@ public class LoginInfo extends JPanel implements ActionListener, MouseListener {
         //处理中间的人事表格
         lm = new LoginModel();
         String paras[] = {"1"};
-        //lm.query("select 人事资料.员工号,姓名,职位,密码 from 人事资料,登录 where 登录.员工号=人事资料.员工号 and 1=?", paras);
         lm.query("select  clerkid,name,zhiwei,password  from UserLogin  where 1=?", paras);
         jtable = new JTable(lm);
 
@@ -110,7 +109,6 @@ public class LoginInfo extends JPanel implements ActionListener, MouseListener {
             lm.query("select *  from UserLogin  where 1=?", paras);
 
             //更新信息输入完之前，数据模型已经更新了，因此
-                /*UpdateMima um=new UpdateMima(Windows1.w1,"修改密码",true,lm,i);*/
             UpdateMima updateMima = new UpdateMima(Windows1.w1, "修改密码", true, lm, i);
             //更新数据模型
             lm = new LoginModel();

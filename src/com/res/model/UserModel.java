@@ -12,8 +12,7 @@ public class UserModel {
         String zhiwei = "";
         SqlHelper sp = null;
         try {
-            /*String sql="select renshiziliao.zhiwei from UserLogin,renshiziliao where UserLogin.clerkid=renshiziliao.clerkid and UserLogin.clerkid=? and UserLogin.password=?";*/
-            String sql = "select UserLogin.zhiwei from UserLogin where  UserLogin.clerkid=? and UserLogin.password=?";
+            String sql = "select zhiwei from UserLogin where clerkid=? and password=?";
             String paras[] = {clerkid, password};
             sp = new SqlHelper();
             //从SqlHelper类中得到数据库的结果集

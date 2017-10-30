@@ -10,7 +10,7 @@ CREATE TABLE UserLogin(
     `password` INT UNSIGNED NOT NULL COMMENT '密码'
 ) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT '用户登录';
 
-INSERT INTO UserLogin (clerkid, `name`, zhiwei, `password`) VALUES (140135, '谢正飞', '系统管理员', 140135);
+INSERT INTO UserLogin (clerkid, `name`, zhiwei, `password`) VALUES (104135, '谢正飞', '系统管理员', 104135);
 
 DROP TABLE IF EXISTS renshiziliao;
 CREATE TABLE renshiziliao(
@@ -26,7 +26,7 @@ CREATE TABLE renshiziliao(
     PRIMARY KEY(clerkid)
 )ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT '人事资料';
 
-INSERT INTO renshiziliao(clerkid, NAME, sex, address, birth, id, xueli, zhiwei, hunfou) VALUES(140135, '谢正飞', '男', '216', '1991-09-07', '342409199109071234', '本科','系统管理员', '已婚');
+INSERT INTO renshiziliao(clerkid, NAME, sex, address, birth, id, xueli, zhiwei, hunfou) VALUES(104135, '谢正飞', '男', '216', '1991-09-07', '342409199109071234', '本科','系统管理员', '已婚');
 
 DROP TABLE IF EXISTS menu;
 CREATE TABLE menu(
