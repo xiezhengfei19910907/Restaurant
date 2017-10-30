@@ -1,13 +1,12 @@
 package com.res.view;
-//引入字体包
 
-import com.res.model.*;
-import com.res.mytools.*;
+import com.res.model.UserModel;
+import com.res.mytools.MyFont;	// 引入字体包
 import com.res.view.Windows1;
 
 import javax.imageio.*;
 import javax.swing.*;
-import javax.swing.border.*;
+//import javax.swing.border.*;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -114,7 +113,7 @@ public class Login extends JDialog implements ActionListener {
 
         public BackImage() {
             try {
-                im = ImageIO.read(new File("Image/login.jpg"));
+                im = ImageIO.read(new File("image/login.jpg"));
             } catch (Exception e) {
                 e.printStackTrace();
             }

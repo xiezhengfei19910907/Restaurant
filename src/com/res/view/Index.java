@@ -7,6 +7,8 @@ package com.res.view;
 import javax.swing.*;
 import java.awt.*;
 
+import com.res.mytools.MyFont;
+
 public class Index extends JWindow implements Runnable {
     paint p;
 
@@ -24,7 +26,6 @@ public class Index extends JWindow implements Runnable {
         int height = Toolkit.getDefaultToolkit().getScreenSize().height;
         this.setLocation(width / 2 - 200, height / 2 - 150);
         this.setVisible(true);
-
     }
 
     public void run() {
@@ -48,7 +49,7 @@ class paint extends JPanel implements Runnable {
     String gg[] = {"系", "统", "正", "在", "加", "载", "请", "稍", "候"};
     int k = 0, tt = 0;
     String shi[] = {"软", "件", "工", "程", "试", "验", "文", "档", "卜", "令", "干", " ", "柴", "化", "然", "董", "立", "柱", " ", "赵", "明", "亮", "编", "码", "丁", "春", " ", "王", "超", " ", "谢", "正", "飞"};
-    Font f = new Font("隶书", Font.PLAIN, 18);
+    Font f = MyFont.f;
 
     boolean ifok = true;
     int width = 180;
@@ -90,7 +91,7 @@ class paint extends JPanel implements Runnable {
 
     public void paintComponent(Graphics g) {
         Image image;
-        image = Toolkit.getDefaultToolkit().getImage("image\\index\\index.jpg");
+        image = Toolkit.getDefaultToolkit().getImage("image/index/index.jpg");
         g.drawImage(image, 0, 0, this.getWidth(), 200, this);
 
         int r = (int) (Math.random() * 255);

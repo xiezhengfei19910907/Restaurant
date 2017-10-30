@@ -77,8 +77,8 @@ public class MenuModel extends AbstractTableModel {
         return ((Vector) rows.get(rowIndex)).get(columnIndex);
     }
 
-    public void queryStr(String sql, String Str2) {//Str2的大小写不能错，又花费很长时间来找错！！！！
-        String sql2 = "select *  from menu where abbreviation=? or name=? or category=?";
+    public void queryStr(String sql, String Str2) {
+        String sql2 = "select * from menu where abbreviation=? or name=? or category=?";
         String[] paras = {Str2, Str2, Str2};
         this.query(sql2, paras);
     }
