@@ -84,4 +84,32 @@ public class LoginModel extends AbstractTableModel {
         String[] paras = {St, St};//此处两个变量，调了好大会才发现错误
         this.query(sql0, paras);
     }
+    
+    /**
+     * 检查用户是否有登录的权限
+     * @param clerkid
+     * @param password
+     * @return
+     */
+    public String checkUser(String clerkid, String password) {
+        String zhiwei = "";
+        SqlHelper sp = null;
+        try {
+            String sql = "select zhiwei from UserLogin where clerkid=? and password=?";
+            String paras[] = {clerkid, password};
+            sp = new SqlHelper();
+            //从SqlHelper类中得到数据库的结果集
+            ResultSet rs = sp.query(sql, paras);
+
+            if (rs.next()) {
+                //如果进去，则取出职位
+                zhiwei = rs.getString(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            sp.close();
+        }
+        return zhiwei;
+    }
 }
