@@ -21,12 +21,17 @@ public class LoginModel extends AbstractTableModel {
     //存放查询文本框的文本
     String St = null;
 
-    public void query(String sql, String paras[]) {
+    /**
+     * 公共查询方法
+     * @param sql
+     * @param params
+     */
+    public void query(String sql, String params[]) {
         //初始化列
         this.colums = new Vector();
         this.rows = new Vector();
         SqlHelper sh = new SqlHelper();
-        ResultSet rs = sh.query(sql, paras);
+        ResultSet rs = sh.query(sql, params);
         //从rs对象中可以得到一个
         try {
             rsmt = rs.getMetaData();
@@ -73,20 +78,25 @@ public class LoginModel extends AbstractTableModel {
         return ((Vector) rows.get(rowIndex)).get(columnIndex);
     }
 
-    public boolean upDate(String sql, String paras[]) {
-        //创建一个SqlHelper（如果不考虑程序的并发性，可以把sqlhelper做成static）
+    /**
+     * 公共更新方法
+     * @param sql
+     * @param params
+     * @return
+     */
+    public boolean upDate(String sql, String params[]) {
         sqlHelper = new SqlHelper();
-        return sqlHelper.exeUpdate(sql, paras);
+        return sqlHelper.exeUpdate(sql, params);
     }
 
     /**
      * 根据姓名或员工号或职位查询登录信息
      * @param St
      */
-    public void getLoginInfo(String St) {
+    public void getLoginInfoByCondition(String St) {
         String sql = "select clerkid,name,zhiwei,password from UserLogin where name=? or clerkid=? or zhiwei=?";
-        String[] paras = {St, St, St};
-        this.query(sql, paras);
+        String[] params = {St, St, St};
+        this.query(sql, params);
     }
     
     /**
@@ -100,10 +110,10 @@ public class LoginModel extends AbstractTableModel {
         SqlHelper sp = null;
         try {
             String sql = "select zhiwei from UserLogin where clerkid=? and password=?";
-            String paras[] = {clerkid, password};
+            String params[] = {clerkid, password};
             sp = new SqlHelper();
             //从SqlHelper类中得到数据库的结果集
-            ResultSet rs = sp.query(sql, paras);
+            ResultSet rs = sp.query(sql, params);
 
             if (rs.next()) {
                 //如果进去，则取出职位
@@ -115,5 +125,45 @@ public class LoginModel extends AbstractTableModel {
             sp.close();
         }
         return zhiwei;
+    }
+    
+    /**
+     * 新增登录用户信息
+     * @param params
+     * @return
+     */
+    public boolean insertLoginInfo(String[] params) {
+    		String sql = "insert into UserLogin values(?,?,?,?)";
+    		
+    		return this.upDate(sql, params);
+    }
+    
+    /**
+     * 更新指定的登录用户信息
+     * @param params
+     * @return
+     */
+    public boolean updateLoginInfo(String[] params) {
+    		String sql = "update UserLogin set name=?,zhiwei=?,password=? where clerkid=?";
+    		
+    		return this.upDate(sql, params);
+    }
+    
+    /**
+     * 删除指定的登录用户
+     * @param params
+     * @return
+     */
+    public boolean deleteLoginInfo(String[] params) {
+    		String sql = "delete from UserLogin where clerkid=?";
+    		
+    		return this.upDate(sql, params);
+    }
+    
+    public void getLoginInfo() {
+    		String sql = "select clerkid,name,zhiwei,password from UserLogin";
+    		String[] params = {};	// 没有参数, 传递一个空值
+    		
+    		this.query(sql, params);
     }
 }

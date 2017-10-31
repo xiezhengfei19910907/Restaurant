@@ -70,9 +70,12 @@ public class SqlHelper {
     public ResultSet query(String sql, String[] params) {
         try {
             ps = ct.prepareStatement(sql);
+            
             //对sql的参数赋值
-            for (int i = 0; i < params.length; i++) {
-                ps.setString(i + 1, params[i]);
+            if (params.length > 0) {
+	            for (int i = 0; i < params.length; i++) {
+	                ps.setString(i + 1, params[i]);
+	            }
             }
             //执行查询
             rs = ps.executeQuery();

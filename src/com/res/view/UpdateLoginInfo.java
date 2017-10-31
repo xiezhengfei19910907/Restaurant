@@ -1,3 +1,8 @@
+/**
+ * 功能: 修改登录信息
+ * 时间: 2013.04.30
+ *
+ */
 package com.res.view;
 
 import java.awt.BorderLayout;
@@ -9,16 +14,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.res.model.LoginModel;
 
-/**
- * 修改登录信息
- * @author allen
- *
- */
 public class UpdateLoginInfo extends JDialog implements ActionListener {
 
     //定义需要的swing组件
@@ -89,11 +90,14 @@ public class UpdateLoginInfo extends JDialog implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == jb1) {
-            String sql = "update UserLogin  set name=?,zhiwei=?,password=? where clerkid=? ";
-            String[] paras = {jtf2.getText(), jtf3.getText(), jtf4.getText(), jtf1.getText()};
-            LoginModel tempModel = new LoginModel();
-            tempModel.upDate(sql, paras);
-            this.dispose();
+            String[] params = {jtf2.getText(), jtf3.getText(), jtf4.getText(), jtf1.getText()};
+            LoginModel loginModel = new LoginModel();
+            if (loginModel.updateLoginInfo(params)) {
+            		JOptionPane.showMessageDialog(this, "修改成功！");
+            		this.dispose();
+            } else {
+            		JOptionPane.showMessageDialog(this, "修改失败！");
+            }
         } else if (e.getSource() == jb2) {
             this.dispose();
         }

@@ -1,3 +1,8 @@
+/**
+ * 功能: 添加登录信息
+ * 时间: 2013.04.30
+ *
+ */
 package com.res.view;
 
 import java.awt.BorderLayout;
@@ -13,13 +18,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import com.res.model.EmpModel;
+import com.res.model.LoginModel;
 
-/**
- * 添加登录信息
- * @author allen
- *
- */
 public class AddLoginInfo extends JDialog implements ActionListener {
 
     //定义需要的swing组件
@@ -80,22 +80,20 @@ public class AddLoginInfo extends JDialog implements ActionListener {
         this.setVisible(true);
     }
 
+    /**
+     * 事件监听
+     */
     public void actionPerformed(ActionEvent e) {
-        //相应点击动作
-        if (e.getSource() == jb1) {
-            //添加
-            EmpModel tempModel = new EmpModel();
-            String sql = "insert into UserLogin values(?,?,?,?)";
-            String paras[] = {jtf1.getText(), jtf2.getText(), jtf3.getText(), jtf4.getText()};
-            boolean b = tempModel.upDate(sql, paras);
-            if (b) {
+        if (e.getSource() == jb1) {	// 添加
+            LoginModel loginModel = new LoginModel();
+            String params[] = {jtf1.getText(), jtf2.getText(), jtf3.getText(), jtf4.getText()};
+            if (loginModel.insertLoginInfo(params)) {
                 JOptionPane.showMessageDialog(this, "添加成功！");
-
-            } else if (b) {
+            } else {
                 JOptionPane.showMessageDialog(this, "添加失败！");
             }
             this.dispose();
-        } else if (e.getSource() == jb2) {
+        } else if (e.getSource() == jb2) {	// 取消
             this.dispose();
         }
     }
