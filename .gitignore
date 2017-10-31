@@ -22,4 +22,5 @@
 hs_err_pid*
 
 .idea
+bin
 !db/mysql-connector-java-5.1.44-bin.jar

@@ -90,7 +90,7 @@ public class LoginInfo extends JPanel implements ActionListener, MouseListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == jb3) {	// 添加登录用户
-            AddMima am = new AddMima(Windows1.w1, "添加密码", true);
+            AddLoginInfo am = new AddLoginInfo(Windows1.w1, "添加密码", true);
             String[] paras = {"1"};
             //更新数据模型
             lm = new LoginModel();
@@ -109,7 +109,7 @@ public class LoginInfo extends JPanel implements ActionListener, MouseListener {
             lm.query("select *  from UserLogin  where 1=?", paras);
 
             //更新信息输入完之前，数据模型已经更新了，因此
-            UpdateMima updateMima = new UpdateMima(Windows1.w1, "修改密码", true, lm, i);
+            UpdateLoginInfo updateMima = new UpdateLoginInfo(Windows1.w1, "修改密码", true, lm, i);
             //更新数据模型
             lm = new LoginModel();
             lm.query("select  clerkid,name,zhiwei,password  from UserLogin  where 1=?", paras);

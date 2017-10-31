@@ -1,17 +1,26 @@
-/*
- * 修改用户登录的信息
- */
 package com.res.view;
 
 import java.awt.BorderLayout;
 import java.awt.Frame;
 import java.awt.GridLayout;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import com.res.model.*;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-public class UpdateMima extends JDialog implements ActionListener {
+import com.res.model.EmpModel;
+
+/**
+ * 添加登录信息
+ * @author allen
+ *
+ */
+public class AddLoginInfo extends JDialog implements ActionListener {
 
     //定义需要的swing组件
     JLabel jl1, jl2, jl3, jl4;
@@ -19,11 +28,13 @@ public class UpdateMima extends JDialog implements ActionListener {
     JTextField jtf1, jtf2, jtf3, jtf4;
     JPanel jp1, jp2, jp3;
 
-    //owner是StuAddDialog的父窗口，
-    //title是窗口的名字，
-    //modal指定窗口是模式的还是非模式的,就是此窗口出现时让不让进行其他操作
-    public UpdateMima(Frame owner, String title, boolean modal, LoginModel lm, int rowNums) {
-
+    /**
+     * 
+     * @param owner owner是StuAddDialog的父窗口
+     * @param title title是窗口的名字
+     * @param modal modal指定窗口是模式的还是非模式的,就是此窗口出现时让不让进行其他操作
+     */
+    public AddLoginInfo(Frame owner, String title, boolean modal) {
         //调用父类构造方法，达到模式对话框效果
         super(owner, title, modal);
         jl1 = new JLabel("员工号", jl1.CENTER);
@@ -32,18 +43,11 @@ public class UpdateMima extends JDialog implements ActionListener {
         jl4 = new JLabel("密码", jl4.CENTER);
 
         jtf1 = new JTextField(30);
-        //初始化数据
-        jtf1.setText((String) lm.getValueAt(rowNums, 0));
-        //jtf1主键不能被修改
-        jtf1.setEditable(false);
         jtf2 = new JTextField(30);
-        jtf2.setText((String) lm.getValueAt(rowNums, 1));
         jtf3 = new JTextField(30);
-        jtf3.setText((String) lm.getValueAt(rowNums, 2));
         jtf4 = new JTextField(30);
-        jtf4.setText((String) lm.getValueAt(rowNums, 3));//整数转换为字符串
 
-        jb1 = new JButton("修改");
+        jb1 = new JButton("添加");
         jb1.addActionListener(this);
         jb2 = new JButton("取消");
         jb2.addActionListener(this);
@@ -62,6 +66,7 @@ public class UpdateMima extends JDialog implements ActionListener {
         jp2.add(jtf3);
         jp2.add(jtf4);
 
+
         jp3.add(jb1);
         jp3.add(jb2);
 
@@ -72,21 +77,23 @@ public class UpdateMima extends JDialog implements ActionListener {
         this.add(jp1);
         this.setLocation(400, 300);
         this.setSize(500, 400);
-        //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//这句话不能有，否则会报警
         this.setVisible(true);
-        //这句话必须有，否则不会显示出来
     }
 
     public void actionPerformed(ActionEvent e) {
+        //相应点击动作
         if (e.getSource() == jb1) {
-            //做一个sql
-            //sql语句创建
-            /*String sql="update UserLogin  set clerkid=?,name=?,zhiwei=?,password=? where clerkid=? or zhiwei=?";*/
-            String sql = "update UserLogin  set name=?,zhiwei=?,password=? where clerkid=? ";
-            //String sql="update 人事资料 set 姓名=?,性别=?,职位=?,籍贯=?,学历=?,出生日期=?,婚否=? where 员工号=?";
-            String[] paras = {jtf2.getText(), jtf3.getText(), jtf4.getText(), jtf1.getText()};
-            LoginModel tempModel = new LoginModel();
-            tempModel.upDate(sql, paras);
+            //添加
+            EmpModel tempModel = new EmpModel();
+            String sql = "insert into UserLogin values(?,?,?,?)";
+            String paras[] = {jtf1.getText(), jtf2.getText(), jtf3.getText(), jtf4.getText()};
+            boolean b = tempModel.upDate(sql, paras);
+            if (b) {
+                JOptionPane.showMessageDialog(this, "添加成功！");
+
+            } else if (b) {
+                JOptionPane.showMessageDialog(this, "添加失败！");
+            }
             this.dispose();
         } else if (e.getSource() == jb2) {
             this.dispose();
