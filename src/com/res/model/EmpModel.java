@@ -1,4 +1,4 @@
-/*
+/**
  * 这是人事数据模型，完成对人事的各种操作
  */
 package com.res.model;
@@ -18,28 +18,32 @@ public class EmpModel extends AbstractTableModel {
     //存放查询文本框的文本
     String Str = null;
 
-    //增 删 改
-    public boolean upDate(String sql, String paras[]) {
-        //创建一个SqlHelper
+    /**
+     * 公共更新数据方法
+     * @param sql
+     * @param params
+     * @return
+     */
+    public boolean upDate(String sql, String params[]) {
         sqlHelper = new SqlHelper();
-        return sqlHelper.exeUpdate(sql, paras);
+        return sqlHelper.exeUpdate(sql, params);
     }
 
     /**
      * 查询需要显示的人事信息
      * @param sql
-     * @param paras
+     * @param params
      */
-    public void query(String sql, String paras[]) {
+    public void query(String sql, String params[]) {
         //初始化列
         this.colums = new Vector<String>();
         this.rows = new Vector<Vector>();
 
         //创建sqlHelper对象
         sqlHelper = new SqlHelper();
-        ResultSet rs = sqlHelper.query(sql, paras);
+        ResultSet rs = sqlHelper.query(sql, params);
         try {
-            ////从rs对象中可以得到一个ResultSetMetaData
+            //从rs对象中可以得到一个ResultSetMetaData
             //rsmt可以得到结果有多少列
             ResultSetMetaData rsmt = rs.getMetaData();
             for (int i = 0; i < rsmt.getColumnCount(); i++) {
@@ -78,9 +82,56 @@ public class EmpModel extends AbstractTableModel {
         return this.colums.get(arg0).toString();
     }
 
-    public void queryStr(String sql, String Str) {
-        String sql1 = "select *  from renshiziliao  where clerkid=? or name=? or zhiwei=?";
-        String[] paras = {Str, Str, Str};
-        this.query(sql1, paras);
+    /**
+     * 根据条件查询员工信息
+     * @param Str
+     */
+    public void getEmpInfoByCondition(String Str) {
+        String sql = "select clerkid,name,sex,address,birth,id,xueli,zhiwei,hunfou from renshiziliao where clerkid=? or name=? or zhiwei=?";
+        String[] params = {Str, Str, Str};
+        
+        this.query(sql, params);
+    }
+    /**
+     * 获取所有的员工
+     */
+    public void getEmpInfo() {
+    		String sql = "select clerkid,name,sex,address,birth,id,xueli,zhiwei,hunfou from renshiziliao";
+    		String[] params = {};
+    		
+    		this.query(sql, params);
+    }
+    
+    /**
+     * 新增人事资料
+     * @param params
+     * @return
+     */
+    public boolean insertEmpInfo(String[] params) {
+    		String sql = "insert into renshiziliao values(?,?,?,?,?,?,?,?,?)";
+    		
+    		return this.upDate(sql, params);
+    }
+    
+    /**
+     * 删除指定的员工
+     * @param params
+     * @return
+     */
+    public boolean deleteEmpInfo(String[] params) {
+    		String sql = "delete from renshiziliao where clerkid=?";
+    		
+    		return this.upDate(sql, params);
+    }
+    
+    /**
+     * 更新指定的员工
+     * @param params
+     * @return
+     */
+    public boolean updateEmpInfo(String[] params) {
+    		String sql = "update renshiziliao set name=?,sex=?,address=?,birth=?,id=?,xueli=?,zhiwei=?,hunfou=? where clerkid=?";
+    		
+    		return this.upDate(sql, params);
     }
 }

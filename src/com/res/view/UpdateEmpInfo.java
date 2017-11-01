@@ -11,7 +11,7 @@ import javax.swing.*;
 
 import com.res.model.EmpModel;
 
-public class UpdateView extends JDialog implements ActionListener {
+public class UpdateEmpInfo extends JDialog implements ActionListener {
 
     //定义需要的swing组件
     JLabel jl1, jl2, jl3, jl4, jl5, jl6, jl7, jl8, jl9;
@@ -22,7 +22,7 @@ public class UpdateView extends JDialog implements ActionListener {
     //owner是StuAddDialog的父窗口，
     //title是窗口的名字，
     //modal指定窗口是模式的还是非模式的,就是此窗口出现时让不让进行其他操作
-    public UpdateView(Frame owner, String title, boolean modal, EmpModel em, int rowNums) {
+    public UpdateEmpInfo(Frame owner, String title, boolean modal, EmpModel em, int rowNums) {
 
         //调用父类构造方法，达到模式对话框效果
         super(owner, title, modal);

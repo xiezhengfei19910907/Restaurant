@@ -6,7 +6,7 @@ package com.res.view;
 
 import com.res.model.LoginModel;
 import com.res.mytools.MyFont;	// 引入字体包
-import com.res.view.Windows1;
+import com.res.view.Windows;
 
 import javax.imageio.*;
 import javax.swing.*;
@@ -26,7 +26,7 @@ public class Login extends JDialog implements ActionListener {
     Font f1;
 
     public static void main(String[] args) {
-        Login login = new Login();
+        new Login();
     }
 
     public Login() {
@@ -133,9 +133,9 @@ public class Login extends JDialog implements ActionListener {
             LoginModel um = new LoginModel();
             String zhiwei = um.checkUser(userName, passwd);//返回员工的职位
             if (zhiwei.equals("经理") || zhiwei.equals("系统管理员") || zhiwei.equals("主管")) {
-                //通过new Windows1()切换到相应的页面(窗口)
-                new Windows1();
-                //切换到Windows1页面后，关闭登陆界面
+                //通过new Windows()切换到相应的页面(窗口)
+                new Windows();
+                //切换到Windows页面后，关闭登陆界面
                 this.dispose();
             }
         } else if (arg0.getSource() == jcancle) {	//当点击取消按钮时，关闭登陆框，退出系统

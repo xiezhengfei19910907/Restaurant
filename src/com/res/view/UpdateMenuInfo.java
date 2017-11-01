@@ -1,37 +1,36 @@
 /*
  * 修改菜谱信息
  */
-
 package com.res.view;
 
 import java.awt.BorderLayout;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.*;
-import java.beans.Statement;
-import java.sql.*;
 
 import javax.swing.*;
 
-import com.res.model.EmpModel;
 import com.res.model.MenuModel;
 
+public class UpdateMenuInfo extends JDialog implements ActionListener {
 
-//import com.sun.corba.se.pept.transport.Connection;在连接数据库的时候这个包很容易自动被引入，这个包不对
-
-public class UpdateMenu extends JDialog implements ActionListener {
-
-    //定义需要的swing组件
+    /**
+     * 定义需要的swing组件
+     */
     JLabel jl1, jl2, jl3, jl4, jl5, jl6, jl7;
     JButton jb1, jb2;
     JTextField jtf1, jtf2, jtf3, jtf4, jtf5, jtf6, jtf7;
     JPanel jp1, jp2, jp3;
 
-    //owner是StuAddDialog的父窗口，
-    //title是窗口的名字，
-    //modal指定窗口是模式的还是非模式的,就是此窗口出现时让不让进行其他操作
-    public UpdateMenu(Frame owner, String title, boolean modal, MenuModel em, int rowNums) {
-
+    /**
+     * 
+     * @param owner owner是StuAddDialog的父窗口
+     * @param title title是窗口的名字
+     * @param modal modal指定窗口是模式的还是非模式的,就是此窗口出现时让不让进行其他操作
+     * @param em
+     * @param rowNums
+     */
+    public UpdateMenuInfo(Frame owner, String title, boolean modal, MenuModel em, int rowNums) {
         //调用父类构造方法，达到模式对话框效果
         super(owner, title, modal);
         jl1 = new JLabel("编号", jl1.CENTER);
@@ -77,7 +76,6 @@ public class UpdateMenu extends JDialog implements ActionListener {
         jp1.add(jl6);
         jp1.add(jl7);
 
-
         jp2.add(jtf1);
         jp2.add(jtf2);
         jp2.add(jtf3);
@@ -86,7 +84,6 @@ public class UpdateMenu extends JDialog implements ActionListener {
         jp2.add(jtf6);
         jp2.add(jtf7);
 
-
         jp3.add(jb1);
         jp3.add(jb2);
 
@@ -94,29 +91,25 @@ public class UpdateMenu extends JDialog implements ActionListener {
         this.add(jp2, BorderLayout.EAST);
         this.add(jp3, BorderLayout.SOUTH);
 
-
         this.add(jp1);
         this.setLocation(400, 300);
         this.setSize(500, 400);
-        //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//这句话不能有，否则会报警
-        this.setVisible(true);//这句话必须有，否则不会显示出来
+        this.setVisible(true);
     }
 
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == jb1) {
-            //做一个sql
-            //sql语句创建
-
-            String sql = "update menu set 名称=?,类别=?,价格=?,原料=?,备注=?,折扣=? where 编号=?";
-            //	String sql="update 人事资料 set 姓名=?,性别=?,职位=?,籍贯=?,学历=?,出生日期=?,婚否=? where 员工号=?";
-            String[] paras = {jtf2.getText(), jtf3.getText(), jtf4.getText(), jtf5.getText(), jtf6.getText(), jtf7.getText(), jtf1.getText()};
-            MenuModel tempModel = new MenuModel();
-            tempModel.upDate(sql, paras);
-            this.dispose();
-        } else if (e.getSource() == jb2) {
+        if (e.getSource() == jb1) {	// 修改
+            String[] params = {jtf2.getText(), jtf3.getText(), jtf4.getText(), jtf5.getText(), jtf6.getText(), jtf7.getText(), jtf1.getText()};
+            MenuModel menuModel = new MenuModel();
+            if (menuModel.updateMenuInfo(params)) {
+            		JOptionPane.showMessageDialog(this, "修改成功！");
+            		this.dispose();
+            } else {
+            		JOptionPane.showMessageDialog(this, "修改失败！");
+            }
+        } else if (e.getSource() == jb2) {	// 取消
             this.dispose();
         }
-
     }
 }
 

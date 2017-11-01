@@ -13,7 +13,7 @@ import java.awt.event.*;
 import javax.imageio.*;
 import java.io.*;
 
-public class Windows1 extends JFrame implements ActionListener, MouseListener {
+public class Windows extends JFrame implements ActionListener, MouseListener {
 
     public static Frame w1;
     //定义界面中需要的组件
@@ -29,7 +29,6 @@ public class Windows1 extends JFrame implements ActionListener, MouseListener {
     JMenuItem jmm1, jmm2, jmm3, jmm4, jmm5;
     //其余菜单的二级菜单
     JMenuItem jm2_1, jm3_1, jm4_1, jm5_1, jm6_1, jm6_2, jm6_3;
-
 
     //二级菜单的图标
 
@@ -73,7 +72,7 @@ public class Windows1 extends JFrame implements ActionListener, MouseListener {
     javax.swing.Timer t;
 
     public static void main(String[] args) {
-        Windows1 w1 = new Windows1();
+        new Windows();
     }
 
     //初始化菜单条的函数
@@ -244,7 +243,7 @@ public class Windows1 extends JFrame implements ActionListener, MouseListener {
         jp1_lab3.setEnabled(false);
         jp1_lab3.addMouseListener(this);
         jp1_imgPanel.add(jp1_lab3);
-        jp1_lab4 = new JLabel("菜 谱 价 格", new ImageIcon("image/center_image/label_4.jpg"), 0);
+        jp1_lab4 = new JLabel("菜 单 服 务", new ImageIcon("image/center_image/label_4.jpg"), 0);
         jp1_lab4.setFont(MyFont.f4);
         jp1_lab4.setCursor(myCursor);
         jp1_lab4.setEnabled(false);
@@ -330,7 +329,7 @@ public class Windows1 extends JFrame implements ActionListener, MouseListener {
 		/*jp3_3=new JPanel();
 		jp3_3.add(jp3_l3);*/
         //菜谱价格
-        Menu menu = new Menu();
+        MenuInfo menu = new MenuInfo();
 
         jp3_4 = new JPanel();
         jp3_4.add(jp3_l4);
@@ -401,7 +400,7 @@ public class Windows1 extends JFrame implements ActionListener, MouseListener {
 
     }
 
-    public Windows1() {
+    public Windows() {
         //设置窗口标题图标
         try {
             //在PS中制作透明背景的图标时，必须保存为GIF格式的图片，方能显示透明背景
@@ -410,7 +409,7 @@ public class Windows1 extends JFrame implements ActionListener, MouseListener {
             e.printStackTrace();
         }
         this.setIconImage(titleIcon);
-        this.setTitle("软件工程试验餐饮管理系统");
+        this.setTitle("软件工程实验餐饮管理系统");
         this.setFont(MyFont.f0);
 
         //把每一个功能块的代码抽象成一个函数，这样可读性高，同时便于测试和分析
@@ -440,26 +439,19 @@ public class Windows1 extends JFrame implements ActionListener, MouseListener {
     }
 
     public void mouseClicked(MouseEvent e) {
-        if (e.getSource() == this.jp1_lab2)//人事管理
-        {
+        if (e.getSource() == this.jp1_lab2) { // 人事管理
             this.cardjp3.show(jp3, "1");
-        } else if (e.getSource() == this.jp1_lab3)//登陆管理
-        {
+        } else if (e.getSource() == this.jp1_lab3) { // 登陆管理
             this.cardjp3.show(jp3, "2");
-        } else if (e.getSource() == this.jp1_lab4)//菜谱价格
-        {
+        } else if (e.getSource() == this.jp1_lab4) { // 菜谱价格
             this.cardjp3.show(jp3, "3");
-        } else if (e.getSource() == this.jp1_lab5)//报表统计
-        {
+        } else if (e.getSource() == this.jp1_lab5) { // 报表统计
             this.cardjp3.show(jp3, "4");
-        } else if (e.getSource() == this.jp1_lab6)//成本及库房
-        {
+        } else if (e.getSource() == this.jp1_lab6) { // 成本及库房
             this.cardjp3.show(jp3, "5");
-        } else if (e.getSource() == this.jp1_lab7)//系统设置
-        {
+        } else if (e.getSource() == this.jp1_lab7) {	// 系统设置
             this.cardjp3.show(jp3, "6");
-        } else if (e.getSource() == this.jp1_lab8)//动画帮助
-        {
+        } else if (e.getSource() == this.jp1_lab8) {	// 动画帮助
             this.cardjp3.show(jp3, "7");
         } else if (e.getSource() == jp2_lab1) {
             //把显示各种操作的界面隐藏起来（jp1)，同时显示jp2卡片布局中的jp2_lab2(向右的箭头)
@@ -473,7 +465,6 @@ public class Windows1 extends JFrame implements ActionListener, MouseListener {
             //同时显示向左的箭头
             this.cardjp2.show(jp2, "0");
         }
-
     }
 
     public void mouseEntered(MouseEvent e) {
