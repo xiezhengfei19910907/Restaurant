@@ -299,14 +299,9 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         try {
             jp3_bg = ImageIO.read(new File("image/center_image/jp3_bg.jpg"));
         } catch (IOException e1) {
-            // TODO Auto-generated catch block
             e1.printStackTrace();
         }
         ImagePanel ip_jp3 = new ImagePanel(jp3_bg);
-        //创建四个图片标签用于测试卡片布局
-        /*jp3_l1=new JLabel(new ImageIcon("image/jp3_test/jp3_1.jpg"));*/
-		/*jp3_l2=new JLabel(new ImageIcon("image/jp3_test/jp3_2.jpg"));*/
-		/*jp3_l3=new JLabel(new ImageIcon("image/jp3_test/jp3_3.jpg"));*/
 
         jp3_l4 = new JLabel(new ImageIcon("image/jp3_test/jp3_4.jpg"));
         jp3_l5 = new JLabel(new ImageIcon("image/jp3_test/jp3_5.jpg"));
@@ -316,18 +311,12 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
 
         //创建各功能块对应的卡片面板
 		
-		/*jp3_1=new JPanel();
-		jp3_1.add(jp3_l1);*/
         //人事管理
         EmpInfo empinfo = new EmpInfo();
 		
-		/*jp3_2=new JPanel();
-		jp3_2.add(jp3_l2);*/
         //登录管理
         LoginInfo logininfo = new LoginInfo();
 		
-		/*jp3_3=new JPanel();
-		jp3_3.add(jp3_l3);*/
         //菜谱价格
         MenuInfo menu = new MenuInfo();
 
@@ -345,9 +334,6 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
 
         //添加卡片
         jp3.add(ip_jp3, "0");
-		/*jp3.add(jp3_1,"1");*/
-		/*jp3.add(jp3_2,"2");*/
-		/*jp3.add(jp3_3,"3");*/
         jp3.add(empinfo, "1");
         jp3.add(logininfo, "2");
         jp3.add(menu, "3");

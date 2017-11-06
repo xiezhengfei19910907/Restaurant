@@ -13,25 +13,30 @@ import com.res.model.MenuModel;
 
 public class AddMenuInfo extends JDialog implements ActionListener {
 
-    //定义需要的swing组件
+    /**
+     * 定义需要的swing组件
+     */
     JLabel jl1, jl2, jl3, jl4, jl5, jl6, jl7;
     JButton jb1, jb2;
     JTextField jtf1, jtf2, jtf3, jtf4, jtf5, jtf6, jtf7;
     JPanel jp1, jp2, jp3;
 
-    //owner是StuAddDialog的父窗口，
-    //title是窗口的名字，
-    //modal指定窗口是模式的还是非模式的,就是此窗口出现时让不让进行其他操作
+    /**
+     * 初始化界面
+     * @param owner owner是StuAddDialog的父窗口
+     * @param title title是窗口的名字
+     * @param modal modal指定窗口是模式的还是非模式的,就是此窗口出现时让不让进行其他操作
+     */
     public AddMenuInfo(Frame owner, String title, boolean modal) {
-        //调用父类构造方法，达到模式对话框效果
+        // 调用父类构造方法，达到模式对话框效果
         super(owner, title, modal);
-        jl1 = new JLabel("编号", jl1.CENTER);
-        jl2 = new JLabel("名称", jl2.CENTER);
-        jl3 = new JLabel("类别", jl3.CENTER);
-        jl4 = new JLabel("价格", jl4.CENTER);
-        jl5 = new JLabel("原料", jl5.CENTER);
-        jl6 = new JLabel("备注", jl6.CENTER);
-        jl7 = new JLabel("折扣", jl7.CENTER);
+        jl1 = new JLabel("编号", SwingConstants.CENTER);
+        jl2 = new JLabel("名称", SwingConstants.CENTER);
+        jl3 = new JLabel("类别", SwingConstants.CENTER);
+        jl4 = new JLabel("价格", SwingConstants.CENTER);
+        jl5 = new JLabel("原料", SwingConstants.CENTER);
+        jl6 = new JLabel("备注", SwingConstants.CENTER);
+        jl7 = new JLabel("折扣", SwingConstants.CENTER);
 
         jtf1 = new JTextField(30);
         jtf2 = new JTextField(30);
@@ -76,25 +81,19 @@ public class AddMenuInfo extends JDialog implements ActionListener {
         this.add(jp1);
         this.setLocation(400, 300);
         this.setSize(500, 400);
-        //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//这句话不能有，否则会报警
-        this.setVisible(true);//这句话必须有，否则不会显示出来
+        this.setVisible(true);
     }
 
     public void actionPerformed(ActionEvent e) {
-        //相应点击动作
-        if (e.getSource() == jb1) {
-            //添加
-            MenuModel tempModel = new MenuModel();
-            String sql = "insert into menu values(?,?,?,?,?,?,?)";
-            String paras[] = {jtf1.getText(), jtf2.getText(), jtf3.getText(),
-                    jtf4.getText(), jtf5.getText(), jtf6.getText(), jtf7.getText()};
-            boolean b = tempModel.upDate(sql, paras);
-            if (b) {
+        if (e.getSource() == jb1) {	// 添加
+            MenuModel menuModel = new MenuModel();
+            String params[] = {jtf1.getText(), jtf2.getText(), jtf3.getText(), jtf4.getText(), jtf5.getText(), jtf6.getText(), jtf7.getText()};
+            if (menuModel.insertMenuInfo(params)) {
                 JOptionPane.showMessageDialog(this, "添加成功！");
-            } else if (b) {
+                this.dispose();
+            } else {
                 JOptionPane.showMessageDialog(this, "添加失败！");
             }
-            this.dispose();
         } else if (e.getSource() == jb2) {
             this.dispose();
         }

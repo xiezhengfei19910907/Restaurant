@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import com.res.model.LoginModel;
 
@@ -39,10 +40,10 @@ public class UpdateLoginInfo extends JDialog implements ActionListener {
     public UpdateLoginInfo(Frame owner, String title, boolean modal, LoginModel lm, int rowNums) {
         //调用父类构造方法，达到模式对话框效果
         super(owner, title, modal);
-        jl1 = new JLabel("员工号", jl1.CENTER);
-        jl2 = new JLabel("姓名", jl2.CENTER);
-        jl3 = new JLabel("职位", jl3.CENTER);
-        jl4 = new JLabel("密码", jl4.CENTER);
+        jl1 = new JLabel("员工号", SwingConstants.CENTER);
+        jl2 = new JLabel("姓名", SwingConstants.CENTER);
+        jl3 = new JLabel("职位", SwingConstants.CENTER);
+        jl4 = new JLabel("密码", SwingConstants.CENTER);
 
         jtf1 = new JTextField(30);
         //初始化数据

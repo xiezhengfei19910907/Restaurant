@@ -1,9 +1,8 @@
 /**
  * 功能: 数据库操作
- * 作者: 谢正飞
  * 时间: 2013.04.30
  * 
- * 注意：如果连接数据库时出现 java.lang.ClassNotFoundException: com.mysql.jdbc.Driver 则表示未引入JAR驱动包
+ * 需要引入驱动包
  */
 package com.res.db;
 
@@ -14,15 +13,15 @@ public class SqlHelper {
     /**
      * 定义需要的对象
      */
-    Connection ct = null;
-    PreparedStatement ps = null;
-    ResultSet rs = null;
+    Connection connection = null;
+    PreparedStatement preparedStatement = null;
+    ResultSet resultSet = null;
     
     /**
-     * mysql database
+     * mysql config
      */
     String driver = "com.mysql.jdbc.Driver";
-    String url = "jdbc:mysql://127.0.0.1:3306/Restaurants?&useSSL=false";
+    String url = "jdbc:mysql://127.0.0.1:3306/Restaurants?useSSL=false";
     String user = "root";
     String password = "root";
 
@@ -34,7 +33,7 @@ public class SqlHelper {
             //加载驱动
             Class.forName(driver);
             //得到连接
-            ct = DriverManager.getConnection(url, user, password);
+            connection = DriverManager.getConnection(url, user, password);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -43,17 +42,17 @@ public class SqlHelper {
     /**
      * 增删改
      * @param sql
-     * @param paras
+     * @param params
      * @return
      */
-    public boolean exeUpdate(String sql, String[] paras) {
+    public boolean exeUpdate(String sql, String[] params) {
         boolean b = true;
         try {
-            ps = ct.prepareStatement(sql);
-            for (int i = 0; i < paras.length; i++) {
-                ps.setString(i + 1, paras[i]);
+            preparedStatement = connection.prepareStatement(sql);
+            for (int i = 0; i < params.length; i++) {
+                preparedStatement.setString(i + 1, params[i]);
             }
-            ps.executeUpdate();
+            preparedStatement.executeUpdate();
         } catch (Exception e) {
             b = false;
             e.printStackTrace();
@@ -69,20 +68,20 @@ public class SqlHelper {
      */
     public ResultSet query(String sql, String[] params) {
         try {
-            ps = ct.prepareStatement(sql);
+            preparedStatement = connection.prepareStatement(sql);
             
             //对sql的参数赋值
             if (params.length > 0) {
 	            for (int i = 0; i < params.length; i++) {
-	                ps.setString(i + 1, params[i]);
+	                preparedStatement.setString(i + 1, params[i]);
 	            }
             }
             //执行查询
-            rs = ps.executeQuery();
+            resultSet = preparedStatement.executeQuery();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return rs;
+        return resultSet;
     }
 
     /**
@@ -90,9 +89,9 @@ public class SqlHelper {
      */
     public void close() {
         try {
-            if (rs != null) rs.close();
-            if (ps != null) ps.close();
-            if (ct != null) ct.close();
+            if (resultSet != null) resultSet.close();
+            if (preparedStatement != null) preparedStatement.close();
+            if (connection != null) connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

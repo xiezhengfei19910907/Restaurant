@@ -33,13 +33,13 @@ public class UpdateMenuInfo extends JDialog implements ActionListener {
     public UpdateMenuInfo(Frame owner, String title, boolean modal, MenuModel em, int rowNums) {
         //调用父类构造方法，达到模式对话框效果
         super(owner, title, modal);
-        jl1 = new JLabel("编号", jl1.CENTER);
-        jl2 = new JLabel("名称", jl2.CENTER);
-        jl3 = new JLabel("类别", jl3.CENTER);
-        jl4 = new JLabel("价格", jl4.CENTER);
-        jl5 = new JLabel("原料", jl5.CENTER);
-        jl6 = new JLabel("备注", jl6.CENTER);
-        jl7 = new JLabel("折扣", jl7.CENTER);
+        jl1 = new JLabel("编号", SwingConstants.CENTER);
+        jl2 = new JLabel("名称", SwingConstants.CENTER);
+        jl3 = new JLabel("类别", SwingConstants.CENTER);
+        jl4 = new JLabel("价格", SwingConstants.CENTER);
+        jl5 = new JLabel("原料", SwingConstants.CENTER);
+        jl6 = new JLabel("备注", SwingConstants.CENTER);
+        jl7 = new JLabel("折扣", SwingConstants.CENTER);
 
         jtf1 = new JTextField(30);
         //初始化数据

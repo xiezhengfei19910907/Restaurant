@@ -90,8 +90,10 @@ public class Login extends JDialog implements ActionListener {
         this.setUndecorated(true);
         //设置窗口居中
         this.setSize(360, 360);
-        int width = getToolkit().getDefaultToolkit().getScreenSize().width;
-        int height = getToolkit().getDefaultToolkit().getScreenSize().height;
+        getToolkit();
+		int width = Toolkit.getDefaultToolkit().getScreenSize().width;
+        getToolkit();
+		int height = Toolkit.getDefaultToolkit().getScreenSize().height;
         this.setLocation(width / 2 - 200, height / 2 - 200);
         this.setVisible(true);
     }

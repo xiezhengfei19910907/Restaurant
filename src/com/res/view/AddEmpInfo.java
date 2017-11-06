@@ -31,15 +31,15 @@ public class AddEmpInfo extends JDialog implements ActionListener {
     public AddEmpInfo(Frame owner, String title, boolean modal) {
         //调用父类构造方法，达到模式对话框效果
         super(owner, title, modal);
-        jl1 = new JLabel("员工号", jl1.CENTER);
-        jl2 = new JLabel("姓名", jl2.CENTER);
-        jl3 = new JLabel("性别", jl3.CENTER);
-        jl4 = new JLabel("籍贯", jl4.CENTER);
-        jl5 = new JLabel("出生日期", jl5.CENTER);
-        jl6 = new JLabel("证件号", jl6.CENTER);
-        jl7 = new JLabel("学历", jl7.CENTER);
-        jl8 = new JLabel("职位", jl8.CENTER);
-        jl9 = new JLabel("婚否", jl9.CENTER);
+        jl1 = new JLabel("员工号", SwingConstants.CENTER);
+        jl2 = new JLabel("姓名", SwingConstants.CENTER);
+        jl3 = new JLabel("性别", SwingConstants.CENTER);
+        jl4 = new JLabel("籍贯", SwingConstants.CENTER);
+        jl5 = new JLabel("出生日期", SwingConstants.CENTER);
+        jl6 = new JLabel("证件号", SwingConstants.CENTER);
+        jl7 = new JLabel("学历", SwingConstants.CENTER);
+        jl8 = new JLabel("职位", SwingConstants.CENTER);
+        jl9 = new JLabel("婚否", SwingConstants.CENTER);
 
         jtf1 = new JTextField(30);
         jtf2 = new JTextField(30);
