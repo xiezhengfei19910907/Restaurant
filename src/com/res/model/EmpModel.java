@@ -87,7 +87,7 @@ public class EmpModel extends AbstractTableModel {
      * @param Str
      */
     public void getEmpInfoByCondition(String Str) {
-        String sql = "select clerkid,name,sex,address,birth,id,xueli,zhiwei,hunfou from renshiziliao where clerkid=? or name=? or zhiwei=?";
+        String sql = "select clerkid,name,sex,address,birth,id,xueli,zhiwei,hunfou from emp where clerkid=? or name=? or zhiwei=?";
         String[] params = {Str, Str, Str};
         
         this.query(sql, params);
@@ -96,7 +96,7 @@ public class EmpModel extends AbstractTableModel {
      * 获取所有的员工
      */
     public void getEmpInfo() {
-    		String sql = "select clerkid,name,sex,address,birth,id,xueli,zhiwei,hunfou from renshiziliao";
+    		String sql = "select clerkid,name,sex,address,birth,id,xueli,zhiwei,hunfou from emp";
     		String[] params = {};
     		
     		this.query(sql, params);
@@ -108,7 +108,7 @@ public class EmpModel extends AbstractTableModel {
      * @return
      */
     public boolean insertEmpInfo(String[] params) {
-    		String sql = "insert into renshiziliao values(?,?,?,?,?,?,?,?,?)";
+    		String sql = "insert into emp values(?,?,?,?,?,?,?,?,?)";
     		
     		return this.upDate(sql, params);
     }
@@ -119,7 +119,7 @@ public class EmpModel extends AbstractTableModel {
      * @return
      */
     public boolean deleteEmpInfo(String[] params) {
-    		String sql = "delete from renshiziliao where clerkid=?";
+    		String sql = "delete from emp where clerkid=?";
     		
     		return this.upDate(sql, params);
     }
@@ -130,7 +130,7 @@ public class EmpModel extends AbstractTableModel {
      * @return
      */
     public boolean updateEmpInfo(String[] params) {
-    		String sql = "update renshiziliao set name=?,sex=?,address=?,birth=?,id=?,xueli=?,zhiwei=?,hunfou=? where clerkid=?";
+    		String sql = "update emp set name=?,sex=?,address=?,birth=?,id=?,xueli=?,zhiwei=?,hunfou=? where clerkid=?";
     		
     		return this.upDate(sql, params);
     }

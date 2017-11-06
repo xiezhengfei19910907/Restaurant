@@ -90,8 +90,15 @@ public class UpdateLoginInfo extends JDialog implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == jb1) {
-            String[] params = {jtf2.getText(), jtf3.getText(), jtf4.getText(), jtf1.getText()};
-            LoginModel loginModel = new LoginModel();
+        		// 如果没有修改密码, 用真实的密码覆盖 "密码"
+        		LoginModel loginModel = new LoginModel();
+        		String password = jtf4.getText().trim();
+        		String clerkId = jtf1.getText().trim();
+        		if (password.equals("密码")) {
+        			password = loginModel.getPasswordByClerkId(clerkId);
+        		}
+        	
+            String[] params = {jtf2.getText(), jtf3.getText(), password, clerkId};
             if (loginModel.updateLoginInfo(params)) {
             		JOptionPane.showMessageDialog(this, "修改成功！");
             		this.dispose();

@@ -19,14 +19,14 @@ public class LoginModel extends AbstractTableModel {
     //写一个方法，用于查询需要显示的人事信息
     //对query修改，让其有更好的通用性
     //存放查询文本框的文本
-    String St = null;
+    String Str = null;
 
     /**
-     * 公共查询方法
+     * 构建表格数据
      * @param sql
      * @param params
      */
-    public void query(String sql, String params[]) {
+    private void query(String sql, String params[]) {
         //初始化列
         this.colums = new Vector();
         this.rows = new Vector();
@@ -39,8 +39,8 @@ public class LoginModel extends AbstractTableModel {
                 this.colums.add(rsmt.getColumnName(i + 1));
             }
 
-        } catch (SQLException e1) {
-            e1.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
         try {
@@ -49,7 +49,7 @@ public class LoginModel extends AbstractTableModel {
                 for (int i = 0; i < rsmt.getColumnCount(); i++) {
                     temp.add(rs.getString(i + 1));
                 }
-                if ((temp.get(rsmt.getColumnCount() - 1)) != null) {
+                if ((temp.get(rsmt.getColumnCount() - 1)) != null) {	// 用 "密码" 覆盖真实的密码
                     temp.set(rsmt.getColumnCount() - 1, "密码");
                 }
                 rows.add(temp);
@@ -79,23 +79,23 @@ public class LoginModel extends AbstractTableModel {
     }
 
     /**
-     * 公共更新方法
+     * 更新方法
      * @param sql
      * @param params
      * @return
      */
-    public boolean upDate(String sql, String params[]) {
+    private boolean upDate(String sql, String params[]) {
         sqlHelper = new SqlHelper();
         return sqlHelper.exeUpdate(sql, params);
     }
 
     /**
      * 根据姓名或员工号或职位查询登录信息
-     * @param St
+     * @param Str
      */
-    public void getLoginInfoByCondition(String St) {
-        String sql = "select clerkid,name,zhiwei,password from UserLogin where name=? or clerkid=? or zhiwei=?";
-        String[] params = {St, St, St};
+    public void getLoginInfoByCondition(String Str) {
+        String sql = "select clerkid,name,zhiwei,password from login where name=? or clerkid=? or zhiwei=?";
+        String[] params = {Str, Str, Str};
         this.query(sql, params);
     }
     
@@ -109,7 +109,7 @@ public class LoginModel extends AbstractTableModel {
         String zhiwei = "";
         SqlHelper sp = null;
         try {
-            String sql = "select zhiwei from UserLogin where clerkid=? and password=?";
+            String sql = "select zhiwei from login where clerkid=? and password=?";
             String params[] = {clerkid, password};
             sp = new SqlHelper();
             //从SqlHelper类中得到数据库的结果集
@@ -133,7 +133,7 @@ public class LoginModel extends AbstractTableModel {
      * @return
      */
     public boolean insertLoginInfo(String[] params) {
-    		String sql = "insert into UserLogin values(?,?,?,?)";
+    		String sql = "insert into login values(?,?,?,?)";
     		
     		return this.upDate(sql, params);
     }
@@ -144,7 +144,7 @@ public class LoginModel extends AbstractTableModel {
      * @return
      */
     public boolean updateLoginInfo(String[] params) {
-    		String sql = "update UserLogin set name=?,zhiwei=?,password=? where clerkid=?";
+    		String sql = "update login set name=?,zhiwei=?,password=? where clerkid=?";
     		
     		return this.upDate(sql, params);
     }
@@ -155,15 +155,42 @@ public class LoginModel extends AbstractTableModel {
      * @return
      */
     public boolean deleteLoginInfo(String[] params) {
-    		String sql = "delete from UserLogin where clerkid=?";
+    		String sql = "delete from login where clerkid=?";
     		
     		return this.upDate(sql, params);
     }
     
+    /**
+     * 获取登录用户列表
+     */
     public void getLoginInfo() {
-    		String sql = "select clerkid,name,zhiwei,password from UserLogin";
+    		String sql = "select clerkid,name,zhiwei,password from login";
     		String[] params = {};	// 没有参数, 传递一个空值
     		
     		this.query(sql, params);
+    }
+    
+    /**
+     * 根据clerkId获取密码
+     * @param clerkId
+     * @return
+     */
+    public String getPasswordByClerkId(String clerkId) {
+    		String sql = "select password from login where clerkid = ? limit 1";
+    		String[] params = {clerkId};
+    		
+    		SqlHelper sqlHelper = new SqlHelper();
+    		ResultSet queryResult = sqlHelper.query(sql, params);
+    		
+    		String password = null;
+    		try {
+			while (queryResult.next()) {
+				password = queryResult.getString("password");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    		
+    		return password;
     }
 }
