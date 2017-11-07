@@ -12,6 +12,7 @@ import java.util.*;
 import java.awt.event.*;
 import javax.imageio.*;
 import java.io.*;
+import java.time.LocalDate;
 
 public class Windows extends JFrame implements ActionListener, MouseListener {
 
@@ -70,10 +71,14 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
     //但是在JAVA中，Timer存在于多个包中，其功能也不一样，因此使用时必须指定包
     //同时必须实现接口监听,implements ActionListener
     javax.swing.Timer t;
-
-    public static void main(String[] args) {
-        new Windows();
-    }
+    
+    /**
+     * 这里的main方法为了方便调试, 程序的入口在index.php文件
+     * @param args
+     */
+    //public static void main(String[] args) {
+    //    new Windows();
+    //}
 
     //初始化菜单条的函数
     public void initMenu() {
@@ -368,8 +373,7 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
         //启动定时器
         t.start();
         //创建显示时间标签
-        //Calendar.getInstance().getTime().toLocaleString()是指得到当前的系统时间
-        timeNow = new JLabel(Calendar.getInstance().getTime().toLocaleString());
+        timeNow = new JLabel(LocalDate.now().toString());
         timeNow.setFont(MyFont.f3);
         try {
             timebg = ImageIO.read(new File("image/time_bg.jpg"));
@@ -421,7 +425,7 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
     }
 
     public void actionPerformed(ActionEvent arg0) {
-        this.timeNow.setText("当前系统时间：" + Calendar.getInstance().getTime().toLocaleString() + " ");
+        this.timeNow.setText("当前系统时间：" + LocalDate.now().toString() + " ");
     }
 
     public void mouseClicked(MouseEvent e) {
