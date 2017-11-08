@@ -3,9 +3,11 @@
  */
 package com.res.model;
 
-import java.sql.*;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.util.Vector;
-import javax.swing.table.*;
+
+import javax.swing.table.AbstractTableModel;
 
 import com.res.db.SqlHelper;
 

@@ -3,15 +3,36 @@
  */
 package com.res.view;
 
-import com.res.mytools.*;
-
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.Timer;
-import java.awt.event.*;
-import javax.imageio.*;
-import java.io.*;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Cursor;
+import java.awt.Frame;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JSplitPane;
+import javax.swing.JToolBar;
+import javax.swing.Timer;
+
+import com.res.mytools.ImagePanel;
+import com.res.mytools.MyFont;
 
 public class Windows extends JFrame implements ActionListener, MouseListener {
 

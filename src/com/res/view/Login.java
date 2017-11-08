@@ -4,16 +4,26 @@
  */
 package com.res.view;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 import com.res.model.LoginModel;
 import com.res.mytools.MyFont;	// 引入字体包
-import com.res.view.Windows;
-
-import javax.imageio.*;
-import javax.swing.*;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
 
 public class Login extends JDialog implements ActionListener {
 
