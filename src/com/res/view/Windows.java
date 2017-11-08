@@ -8,7 +8,6 @@ import com.res.mytools.*;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.Timer;
-import java.util.*;
 import java.awt.event.*;
 import javax.imageio.*;
 import java.io.*;
