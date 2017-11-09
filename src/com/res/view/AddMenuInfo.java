@@ -1,6 +1,3 @@
-/**
- * 菜谱价格中的添加菜名
- */
 package com.res.view;
 
 import java.awt.BorderLayout;
@@ -19,6 +16,11 @@ import javax.swing.SwingConstants;
 
 import com.res.model.MenuModel;
 
+/**
+ * 菜谱价格中的添加菜名
+ * @author allen
+ *
+ */
 public class AddMenuInfo extends JDialog implements ActionListener {
 
     /**

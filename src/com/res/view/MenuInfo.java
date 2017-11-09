@@ -1,6 +1,3 @@
-/**
- * 菜谱价格管理
- */
 package com.res.view;
 
 import java.awt.BorderLayout;
@@ -25,6 +22,11 @@ import javax.swing.border.TitledBorder;
 import com.res.model.MenuModel;
 import com.res.mytools.MyFont;
 
+/**
+ * 菜谱价格管理s
+ * @author allen
+ *
+ */
 public class MenuInfo extends JPanel implements ActionListener, MouseListener {
     //定义需要的各个组件
     JPanel p1, p2, p3, p4, p5;

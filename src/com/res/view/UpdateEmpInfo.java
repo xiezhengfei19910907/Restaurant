@@ -1,6 +1,3 @@
-/**
- * 人事管理界面的修改按钮，用于修改员工的信息
- */
 package com.res.view;
 
 import java.awt.BorderLayout;
@@ -19,6 +16,11 @@ import javax.swing.SwingConstants;
 
 import com.res.model.EmpModel;
 
+/**
+ * 人事管理界面的修改按钮，用于修改员工的信息
+ * @author allen
+ *
+ */
 public class UpdateEmpInfo extends JDialog implements ActionListener {
 
     /**

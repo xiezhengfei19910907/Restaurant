@@ -1,6 +1,3 @@
-/**
- * 登录后的主界面
- */
 package com.res.view;
 
 import java.awt.BorderLayout;
@@ -34,6 +31,11 @@ import javax.swing.Timer;
 import com.res.mytools.ImagePanel;
 import com.res.mytools.MyFont;
 
+/**
+ * 登录后的主界面
+ * @author allen
+ *
+ */
 public class Windows extends JFrame implements ActionListener, MouseListener {
 
     public static Frame w1;

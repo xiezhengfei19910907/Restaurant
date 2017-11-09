@@ -1,7 +1,3 @@
-/**
- * 功能: 登录管理界面实现
- * 时间: 2013.04.30
- */
 package com.res.view;
 
 import java.awt.BorderLayout;
@@ -25,6 +21,11 @@ import javax.swing.border.TitledBorder;
 import com.res.model.LoginModel;
 import com.res.mytools.MyFont;
 
+/**
+ * 登录管理界面实现
+ * @author allen
+ *
+ */
 public class LoginInfo extends JPanel implements ActionListener, MouseListener {
     //定义需要的各个组件
     JPanel p1, p2, p3, p4, p5;

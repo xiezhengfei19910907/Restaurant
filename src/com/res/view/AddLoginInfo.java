@@ -1,8 +1,3 @@
-/**
- * 功能: 添加登录信息
- * 时间: 2013.04.30
- *
- */
 package com.res.view;
 
 import java.awt.BorderLayout;
@@ -21,6 +16,11 @@ import javax.swing.SwingConstants;
 
 import com.res.model.LoginModel;
 
+/**
+ * 添加登录信息
+ * @author allen
+ *
+ */
 public class AddLoginInfo extends JDialog implements ActionListener {
 
     //定义需要的swing组件

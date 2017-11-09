@@ -1,7 +1,3 @@
-/**
- * 功能：软件工程实验闪屏界面
- * 时间：2013.04.30
- */
 package com.res.view;
 
 import java.awt.Color;
@@ -12,6 +8,11 @@ import java.awt.Toolkit;
 import javax.swing.JPanel;
 import javax.swing.JWindow;
 
+/**
+ * 闪屏界面
+ * @author allen
+ * 
+ */
 public class Index extends JWindow implements Runnable {
     paint p;
 

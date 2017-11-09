@@ -1,6 +1,3 @@
-/**
- * 这是人事数据模型，完成对人事的各种操作
- */
 package com.res.model;
 
 import java.sql.ResultSet;
@@ -11,6 +8,11 @@ import javax.swing.table.AbstractTableModel;
 
 import com.res.db.SqlHelper;
 
+/**
+ * 这是人事数据模型，完成对人事的各种操作
+ * @author allen
+ *
+ */
 public class EmpModel extends AbstractTableModel {
     SqlHelper sqlHelper;
     Vector<String> colums;

@@ -1,7 +1,3 @@
-/*
- * 这是一个可以动态加载一个图片做背景的JPanel
- * 
- * */
 package com.res.mytools;
 
 import java.awt.Graphics;
@@ -10,6 +6,11 @@ import java.awt.Toolkit;
 
 import javax.swing.JPanel;
 
+/**
+ * 这是一个可以动态加载一个图片做背景的JPanel
+ * @author allen
+ *
+ */
 public class ImagePanel extends JPanel {
     //定义组件
     Image im;

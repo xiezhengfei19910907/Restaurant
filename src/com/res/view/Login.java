@@ -1,7 +1,3 @@
-/**
- * 功能: 弹出登录框并验证输入的员工号以及密码是否有效
- * 时间: 2013.04.30
- */
 package com.res.view;
 
 import java.awt.Color;
@@ -25,6 +21,11 @@ import javax.swing.JTextField;
 import com.res.model.LoginModel;
 import com.res.mytools.MyFont;	// 引入字体包
 
+/**
+ * 弹出登录框并验证输入的员工号以及密码是否有效
+ * @author allen
+ *
+ */
 public class Login extends JDialog implements ActionListener {
 
     //创建登陆组件

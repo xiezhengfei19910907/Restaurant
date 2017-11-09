@@ -1,8 +1,3 @@
-/**
- * 功能: 修改登录信息
- * 时间: 2013.04.30
- *
- */
 package com.res.view;
 
 import java.awt.BorderLayout;
@@ -21,6 +16,11 @@ import javax.swing.SwingConstants;
 
 import com.res.model.LoginModel;
 
+/**
+ * 修改登录信息
+ * @author allen
+ *
+ */
 public class UpdateLoginInfo extends JDialog implements ActionListener {
 
     //定义需要的swing组件

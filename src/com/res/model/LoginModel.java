@@ -1,6 +1,3 @@
-/*
- * 登录管理模型，完成对登录的管理
- */
 package com.res.model;
 
 import java.sql.ResultSet;
@@ -11,6 +8,11 @@ import javax.swing.table.AbstractTableModel;
 
 import com.res.db.SqlHelper;
 
+/**
+ * 登录管理模型，完成对登录的管理
+ * @author allen
+ *
+ */
 public class LoginModel extends AbstractTableModel {
     SqlHelper sqlHelper;
     Vector colums;

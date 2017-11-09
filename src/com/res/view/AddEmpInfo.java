@@ -1,7 +1,3 @@
-/**
- * 功能: 人事资料中的添加用户
- * 时间: 2013.04.30
- */
 package com.res.view;
 
 import java.awt.BorderLayout;
@@ -20,6 +16,11 @@ import javax.swing.SwingConstants;
 
 import com.res.model.EmpModel;
 
+/**
+ * 人事资料中的添加用户
+ * @author allen
+ *
+ */
 public class AddEmpInfo extends JDialog implements ActionListener {
 
     /**

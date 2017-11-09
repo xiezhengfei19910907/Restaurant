@@ -1,7 +1,3 @@
-/**
- * 功能: 人事管理界面
- * 时间: 2013.04.30
- */
 package com.res.view;
 
 import java.awt.BorderLayout;
@@ -25,6 +21,11 @@ import javax.swing.border.TitledBorder;
 import com.res.model.EmpModel;
 import com.res.mytools.MyFont;
 
+/**
+ * 人事管理界面
+ * @author allen
+ *
+ */
 public class EmpInfo extends JPanel implements ActionListener, MouseListener {
 
     //定义需要的各个组件

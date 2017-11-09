@@ -1,6 +1,3 @@
-/**
- * 这是对菜单的操作和管理
- */
 package com.res.model;
 
 import java.sql.ResultSet;
@@ -11,6 +8,11 @@ import javax.swing.table.AbstractTableModel;
 
 import com.res.db.SqlHelper;
 
+/**
+ * 这是对菜单的操作和管理
+ * @author allen
+ *
+ */
 public class MenuModel extends AbstractTableModel {
 
     SqlHelper sqlHelper;

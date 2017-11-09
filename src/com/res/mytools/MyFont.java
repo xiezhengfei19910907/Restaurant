@@ -2,6 +2,11 @@ package com.res.mytools;
 
 import java.awt.Font;
 
+/**
+ * 公共字体
+ * @author allen
+ *
+ */
 public class MyFont {
     public static Font f0 = new Font("宋体", Font.PLAIN, 18);
     public static Font f1 = new Font("宋体", Font.PLAIN, 16);

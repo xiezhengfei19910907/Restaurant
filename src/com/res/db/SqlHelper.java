@@ -1,9 +1,3 @@
-/**
- * 功能: 数据库操作
- * 时间: 2013.04.30
- * 
- * 需要引入驱动包
- */
 package com.res.db;
 
 import java.sql.Connection;
@@ -11,6 +5,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+/**
+ * 数据库操作
+ * @author allen
+ * 
+ */
 public class SqlHelper {
 	
     /**

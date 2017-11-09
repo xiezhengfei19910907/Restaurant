@@ -1,6 +1,3 @@
-/*
- * 修改菜谱信息
- */
 package com.res.view;
 
 import java.awt.BorderLayout;
@@ -19,6 +16,11 @@ import javax.swing.SwingConstants;
 
 import com.res.model.MenuModel;
 
+/**
+ * 修改菜单信息
+ * @author allen
+ *
+ */
 public class UpdateMenuInfo extends JDialog implements ActionListener {
 
     /**
