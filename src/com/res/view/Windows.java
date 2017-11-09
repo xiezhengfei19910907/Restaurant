@@ -98,9 +98,9 @@ public class Windows extends JFrame implements ActionListener, MouseListener {
      * 这里的main方法为了方便调试, 程序的入口在index.php文件
      * @param args
      */
-    //public static void main(String[] args) {
-    //    new Windows();
-    //}
+    public static void main(String[] args) {
+        new Windows();
+    }
 
     //初始化菜单条的函数
     public void initMenu() {
